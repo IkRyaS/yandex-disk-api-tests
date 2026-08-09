@@ -1,0 +1,11 @@
+services:
+  tests:
+    build: .
+    container_name: yandex-disk-tests
+    environment:
+      - YA_DISK_TOKEN=${YA_DISK_TOKEN}
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./tests:/app/tests
+      - ./src:/app/src
+    command: pytest --alluredir=allure-results -v
